@@ -1,0 +1,12 @@
+version: '3'
+services:
+  plex:
+    image: plexinc/pms-docker
+    container_name: plex
+    network_mode: host
+    environment:
+      - TZ="America/New_York"
+    volumes:
+      - /var/lib/plexmediaserver/Library:/config
+      - /var/lib/plexmediaserver/Library:/data/movies
+    restart: unless-stopped
