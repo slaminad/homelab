@@ -1,5 +1,4 @@
 version: "3"
-
 services:
   pihole:
     container_name: pihole
@@ -14,8 +13,8 @@ services:
       TZ: 'America/New_York'
       ServerIP: '10.0.0.9'
     volumes:
-      - './etc-pihole/:/etc/pihole/'
-      - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
+      - '/var/lib/pihole/etc-pihole/:/etc/pihole/'
+      - '/var/lib/pihole/etc-dnsmasq.d/:/etc/dnsmasq.d/'
     dns:
       - 127.0.0.1
       - 1.1.1.1
