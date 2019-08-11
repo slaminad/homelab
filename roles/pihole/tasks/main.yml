@@ -1,10 +1,6 @@
 ---
 # This playbook will setup PiHole using Docker on a server
-
-- hosts: docker
-  remote_user: root
-
-  tasks:
-  - docker_compose:
-      project_src: ~/homelab/pihole/files
-      state: present
+- name: Docker-compose up pihole
+  docker_compose:
+    project_src: ~/homelab/roles/pihole/files
+    state: present

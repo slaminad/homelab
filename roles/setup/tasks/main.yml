@@ -1,0 +1,4 @@
+---
+- name: Add user ansible
+
+- name: Add ansible to the docker group
