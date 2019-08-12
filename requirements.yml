@@ -1,9 +1,9 @@
 # This file lists pre-requisistes for running Docker on a host, shoutout to geerlingguy
-- name: repo-epel
+- name: geerlingguy.repo-epel
   src: https://github.com/geerlingguy/ansible-role-repo-epel
 
-- name: pip
+- name: geerlingguy.pip
   src: https://github.com/geerlingguy/ansible-role-pip
 
-- name: docker
+- name: geerlingguy.docker
   src: https://github.com/geerlingguy/ansible-role-docker

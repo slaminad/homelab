@@ -1,0 +1,12 @@
+---
+# This playbook will setup the Unifi Controller using Docker
+- name: Open necessary ports
+  firewalld:
+    port:
+    permanent: yes
+    state: enabled
+
+- name: Docker-compose up
+  docker_compose:
+    project_src: ~/homelab/roles/unifi/files
+    state: present
