@@ -1,8 +1,0 @@
-servers:
-  children:
-    bass:
-      hosts:
-        plex:
-        docker:
-      vars:
-        ansible_user: dan

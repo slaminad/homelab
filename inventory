@@ -2,7 +2,7 @@
 docker
 
 [bass:vars]
-ansible_user=dan
+ansible_user=ansible
 
 [servers:children]
 bass
