@@ -1,6 +1,7 @@
 ---
 # This playbook will setup PiHole using Docker on a server
 - name: Open necessary ports
+  become: yes
   firewalld:
     port: "{{ item }}"
     permanent: yes
@@ -10,8 +11,15 @@
 - name: Reload firewalld
   command: firewall-cmd --reload
 
+- name: Place docker-compose file
+  copy:
+    src: ../files/
+    dest: /etc/ansible/pihole/
+    owner: ansible
+    group: ansible
+
 - name: Docker-compose up pihole
   become: false
   docker_compose:
-    project_src: ~/homelab/roles/pihole/files
+    project_src: /etc/ansible/pihole
     state: present

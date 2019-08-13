@@ -2,7 +2,7 @@
 - hosts: servers
   become: yes
   roles:
-    #- geerlingguy.repo-epel
-    #- geerlingguy.pip
-    #- geerlingguy.docker
+    - geerlingguy.repo-epel
+    - geerlingguy.pip
+    - geerlingguy.docker
     - pihole

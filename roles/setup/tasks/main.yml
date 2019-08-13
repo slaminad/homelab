@@ -1,4 +1,20 @@
 ---
-- name: Add user ansible
+- name: Add ansible group
+  group:
+    name: ansible
+    gid: 1010
+    state: present
 
-- name: Add ansible to the docker group
+- name: Add user ansible
+  user:
+    name: ansible
+    comment: Ansible
+    groups: ansible,docker
+    uid: 1010
+    state: present
+
+- name: Add SSH key to ansible user
+  authorized_key:
+    user: ansible
+    key: "{{ lookup('file', '~/.ssh/homelab.pub') }}"
+    state: present

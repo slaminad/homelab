@@ -1,8 +1,5 @@
 [bass]
 docker
 
-[bass:vars]
-ansible_user=ansible
-
 [servers:children]
 bass
