@@ -6,3 +6,6 @@
     - geerlingguy.pip
     - geerlingguy.docker
     - pihole
+    - unifi
+    - gitlab
+    - plex

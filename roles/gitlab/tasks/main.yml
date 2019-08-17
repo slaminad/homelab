@@ -1,0 +1,25 @@
+---
+# This playbook will setup GitLab using Docker on a server
+- name: Open necessary ports
+  become: yes
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  loop: "{{ ports }}"
+
+- name: Reload firewalld
+  command: firewall-cmd --reload
+
+- name: Place docker-compose file
+  copy:
+    src: ../files/
+    dest: /etc/ansible/gitlab/
+    owner: ansible
+    group: ansible
+
+- name: Docker-compose up gitlab
+  become: false
+  docker_compose:
+    project_src: /etc/ansible/gitlab
+    state: present

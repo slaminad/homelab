@@ -2,11 +2,23 @@
 # This playbook will setup the Unifi Controller using Docker
 - name: Open necessary ports
   firewalld:
-    port:
+    port: "{{ item }}"
     permanent: yes
     state: enabled
+  loop: "{{ ports }}"
 
-- name: Docker-compose up
+- name: Reload firewalld
+  command: firewall-cmd --reload
+
+- name: Place docker-compose file
+  copy:  
+    src: ../files/
+    dest: /etc/ansible/unifi/
+    owner: ansible
+    group: ansible
+
+- name: Docker-compose up unifi
+  become: false
   docker_compose:
-    project_src: ~/homelab/roles/unifi/files
+    project_src: /etc/ansible/unifi
     state: present
